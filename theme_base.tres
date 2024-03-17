@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bblpnse6fg3h3"]
+
+[ext_resource type="FontFile" uid="uid://dmsdp1k2n2gbk" path="res://assets/hud/fonts/NokiaCellphoneFC.ttf" id="1_0eipo"]
+
+[resource]
+default_font = ExtResource("1_0eipo")
+Button/colors/font_hover_color = Color(1, 0.878431, 0.509804, 1)
+Label/colors/font_outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+Label/constants/outline_size = 2
+Label/font_sizes/font_size = 18

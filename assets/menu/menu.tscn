@@ -1,0 +1,70 @@
+[gd_scene load_steps=5 format=3 uid="uid://7g57eov2hanw"]
+
+[ext_resource type="Script" path="res://assets/menu/menu.gd" id="1_2nv4r"]
+[ext_resource type="AudioStream" uid="uid://bsy38psrwbseb" path="res://assets/menu/music/New Hope.ogg" id="1_nwc3h"]
+[ext_resource type="Texture2D" uid="uid://cib8ol1onsnwd" path="res://assets/menu/sprites/background.png" id="2_snfjv"]
+[ext_resource type="Theme" uid="uid://bblpnse6fg3h3" path="res://theme_base.tres" id="3_w60hq"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2nv4r")
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_nwc3h")
+volume_db = -20.0
+autoplay = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_snfjv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -47.0
+offset_bottom = 47.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="dxmxp" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_w60hq")
+theme_override_colors/font_color = Color(1, 0.878431, 0.509804, 1)
+theme_override_font_sizes/font_size = 13
+text = "dxmxp"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Spacecraft" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_w60hq")
+text = "Spacecraft"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="BtnStart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_w60hq")
+theme_override_font_sizes/font_size = 10
+text = "Start"
+flat = true
+
+[node name="BtnExit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_w60hq")
+theme_override_font_sizes/font_size = 10
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/BtnStart" to="." method="_on_btn_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/BtnExit" to="." method="_on_btn_exit_pressed"]
