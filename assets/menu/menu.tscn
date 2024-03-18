@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://assets/menu/menu.gd" id="1_2nv4r"]
 [ext_resource type="AudioStream" uid="uid://bsy38psrwbseb" path="res://assets/menu/music/New Hope.ogg" id="1_nwc3h"]
 [ext_resource type="Texture2D" uid="uid://cib8ol1onsnwd" path="res://assets/menu/sprites/background.png" id="2_snfjv"]
-[ext_resource type="Theme" uid="uid://bblpnse6fg3h3" path="res://theme_base.tres" id="3_w60hq"]
+[ext_resource type="Theme" uid="uid://bblpnse6fg3h3" path="res://theme.tres" id="3_w60hq"]
 
 [node name="Menu" type="Control"]
 layout_mode = 3
