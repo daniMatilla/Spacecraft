@@ -1,0 +1,71 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcg0kkb4cyxce"]
+
+[ext_resource type="AudioStream" uid="uid://cbo1yji6rwcuy" path="res://assets/hud/music/Game Over.ogg" id="1_nyfyx"]
+[ext_resource type="Script" path="res://assets/hud/hud.gd" id="1_u87e8"]
+[ext_resource type="Theme" uid="uid://bblpnse6fg3h3" path="res://theme.tres" id="2_tdx0y"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_u87e8")
+
+[node name="BgMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_nyfyx")
+volume_db = -10.0
+
+[node name="ScoreContainer" type="MarginContainer" parent="."]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScoreContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ScoreContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tdx0y")
+theme_override_font_sizes/font_size = 13
+text = "Score"
+
+[node name="Score" type="Label" parent="ScoreContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_tdx0y")
+theme_override_font_sizes/font_size = 13
+text = "0"
+
+[node name="GameOverContainer" type="VBoxContainer" parent="."]
+visible = false
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="GameOverContainer"]
+layout_mode = 2
+theme = ExtResource("2_tdx0y")
+text = "Game Over"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="GameOverContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="GameOverContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_tdx0y")
+theme_override_font_sizes/font_size = 13
+text = "Restart"
+flat = true
+
+[node name="Menu" type="Button" parent="GameOverContainer/Buttons"]
+layout_mode = 2
+theme = ExtResource("2_tdx0y")
+theme_override_font_sizes/font_size = 13
+text = "Menu"
+flat = true
+
+[connection signal="pressed" from="GameOverContainer/Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverContainer/Buttons/Menu" to="." method="_on_menu_pressed"]

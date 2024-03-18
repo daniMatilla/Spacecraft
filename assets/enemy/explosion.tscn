@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=3 uid="uid://cajxdsd5xxdsi"]
+
+[ext_resource type="Script" path="res://assets/enemy/explosion.gd" id="1_24tf4"]
+[ext_resource type="Texture2D" uid="uid://drt2wgubx5rrb" path="res://assets/enemy/sprites/explosion-1.png" id="2_8ircc"]
+[ext_resource type="Texture2D" uid="uid://bloq76drkefnx" path="res://assets/enemy/sprites/explosion-2.png" id="3_nd72v"]
+[ext_resource type="Texture2D" uid="uid://bdwnj0v466dpx" path="res://assets/enemy/sprites/explosion-3.png" id="4_7tcth"]
+[ext_resource type="Texture2D" uid="uid://dvxslt2x8badc" path="res://assets/enemy/sprites/explosion-4.png" id="5_v56i4"]
+[ext_resource type="Texture2D" uid="uid://hawnfop23wau" path="res://assets/enemy/sprites/explosion-5.png" id="6_aoov5"]
+[ext_resource type="AudioStream" uid="uid://d0hv3rc85ismv" path="res://assets/enemy/sounds/Explosion.ogg" id="7_oyd4j"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_clspy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8ircc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nd72v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7tcth")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_v56i4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aoov5")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"explosion",
+"speed": 5.0
+}]
+
+[node name="Explosion" type="Node2D"]
+script = ExtResource("1_24tf4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_clspy")
+animation = &"explosion"
+frame_progress = 0.690342
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_oyd4j")
+volume_db = -20.0
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

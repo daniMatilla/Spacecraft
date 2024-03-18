@@ -1,11 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://x86jdy7to8l2"]
+[gd_scene load_steps=8 format=3 uid="uid://x86jdy7to8l2"]
 
 [ext_resource type="Script" path="res://assets/level/level.gd" id="1_86xtm"]
 [ext_resource type="Texture2D" uid="uid://d3gm02vlesyq7" path="res://assets/level/sprites/desert-backgorund.png" id="1_dtr7s"]
 [ext_resource type="AudioStream" uid="uid://ymjirvy47xcp" path="res://assets/level/music/Common Fight.ogg" id="1_m2ccs"]
 [ext_resource type="Texture2D" uid="uid://drballac3h2su" path="res://assets/level/sprites/clouds.png" id="2_rioi3"]
+[ext_resource type="PackedScene" uid="uid://dyxr4gbvwqi37" path="res://assets/player/player.tscn" id="5_7f0fj"]
+[ext_resource type="PackedScene" uid="uid://dcg0kkb4cyxce" path="res://assets/hud/hud.tscn" id="5_tm418"]
+
+[sub_resource type="Curve2D" id="Curve2D_vau0c"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 145, 1)
+}
+point_count = 2
 
 [node name="Level" type="Node2D" groups=["level"]]
+position = Vector2(1, 0)
 script = ExtResource("1_86xtm")
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
@@ -42,3 +51,20 @@ motion_mirroring = Vector2(0, 272)
 modulate = Color(1, 1, 1, 0.470588)
 texture = ExtResource("2_rioi3")
 centered = false
+
+[node name="HUD" parent="." instance=ExtResource("5_tm418")]
+
+[node name="EnemyTimer" type="Timer" parent="."]
+
+[node name="EnemyPath" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vau0c")
+
+[node name="EnemySpawn" type="PathFollow2D" parent="EnemyPath"]
+position = Vector2(0, 1)
+
+[node name="Player" parent="." instance=ExtResource("5_7f0fj")]
+position = Vector2(84, 237)
+
+[connection signal="game_over" from="HUD" to="." method="_on_hud_game_over"]
+[connection signal="timeout" from="EnemyTimer" to="." method="_on_enemy_timer_timeout"]
+[connection signal="tree_exiting" from="Player" to="HUD" method="_on_player_tree_exiting"]

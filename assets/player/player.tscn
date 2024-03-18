@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dyxr4gbvwqi37"]
+[gd_scene load_steps=9 format=3 uid="uid://dyxr4gbvwqi37"]
 
 [ext_resource type="Script" path="res://assets/player/player.gd" id="1_7bw5s"]
 [ext_resource type="Texture2D" uid="uid://dpu45jjsgwde4" path="res://assets/player/sprites/player-horizontal-1.png" id="1_uhg6i"]
 [ext_resource type="Texture2D" uid="uid://c84ogt7g8q1l6" path="res://assets/player/sprites/player-horizontal-2.png" id="2_5vpy8"]
+[ext_resource type="PackedScene" uid="uid://bqrri2b10o23d" path="res://assets/player/shoot.tscn" id="2_uws4b"]
 [ext_resource type="Texture2D" uid="uid://c2vy10m1yyfor" path="res://assets/player/sprites/player-vertical-1.png" id="3_pi1wp"]
 [ext_resource type="Texture2D" uid="uid://bmuhdt2dol7oi" path="res://assets/player/sprites/player-vertical-2.png" id="4_vhtur"]
 
@@ -34,8 +35,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_t5khx"]
 size = Vector2(16, 15)
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_7bw5s")
+shoot = ExtResource("2_uws4b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_v5m15")

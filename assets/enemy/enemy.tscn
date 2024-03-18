@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://b78jdvuk2jq1j"]
+
+[ext_resource type="Texture2D" uid="uid://dcx8as1rpb1q7" path="res://assets/enemy/sprites/enemy-1.png" id="1_3c8wd"]
+[ext_resource type="Script" path="res://assets/enemy/enemy.gd" id="1_worhk"]
+[ext_resource type="PackedScene" uid="uid://cajxdsd5xxdsi" path="res://assets/enemy/explosion.tscn" id="2_n3kbn"]
+[ext_resource type="Texture2D" uid="uid://b4v4p2yd5r0l3" path="res://assets/enemy/sprites/enemy-2.png" id="2_qi2yw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0a1wo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3c8wd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qi2yw")
+}],
+"loop": true,
+"name": &"vertical",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0olfq"]
+size = Vector2(26, 20)
+
+[node name="Enemy" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_worhk")
+explosion = ExtResource("2_n3kbn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_0a1wo")
+animation = &"vertical"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_0olfq")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-13, -4, 26, 20)
+
+[node name="ExplosionSpawn" type="Marker2D" parent="."]
+position = Vector2(0, 16)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
