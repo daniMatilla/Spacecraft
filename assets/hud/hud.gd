@@ -14,10 +14,10 @@ func end_game():
     $BgMusic.play()
 
 func _on_menu_pressed():
-    get_tree().reload_current_scene()
+    get_tree().change_scene_to_file("res://assets/menu/menu.tscn")
 
 func _on_restart_pressed():
-    get_tree().change_scene_to_file("res://assets/menu/menu.tscn")
+    get_tree().reload_current_scene()
 
 func _on_player_tree_exiting():
     end_game()

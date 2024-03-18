@@ -23,9 +23,9 @@ GLOBAL="*res://global.gd"
 
 window/size/viewport_width=144
 window/size/viewport_height=256
-window/size/window_width_override=576
-window/size/window_height_override=1024
-window/stretch/mode="viewport"
+window/size/window_width_override=432
+window/size/window_height_override=768
+window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 
 [rendering]

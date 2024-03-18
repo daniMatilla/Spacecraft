@@ -1,6 +1,6 @@
 class_name Shoot extends Area2D
 
-@onready var player: Player = get_tree().get_first_node_in_group("player")
+@onready var player: Player = get_tree().get_nodes_in_group("player")[0]
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var sound_shoot: AudioStreamPlayer = $SoundShoot
 const SPEED = 180
@@ -16,6 +16,7 @@ func _physics_process(delta):
 func _on_area_entered(area: Area2D):
 	if area.is_in_group("enemy"):
 		queue_free()
+		player.can_shoot = true
 
 func _on_screen_exited():
 	player.can_shoot = true

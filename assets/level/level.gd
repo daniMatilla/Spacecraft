@@ -23,7 +23,7 @@ func _on_hud_game_over():
 	bg_music.stop()
 
 func _on_enemy_timer_timeout():
-	enemy_spawn.h_offset = randi()
+	enemy_spawn.progress = randi()
 	var enemy_instance = enemy.instantiate()
 	add_child(enemy_instance)
 	enemy_instance.position = enemy_spawn.position

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://x86jdy7to8l2"]
+[gd_scene load_steps=9 format=3 uid="uid://x86jdy7to8l2"]
 
 [ext_resource type="Script" path="res://assets/level/level.gd" id="1_86xtm"]
 [ext_resource type="Texture2D" uid="uid://d3gm02vlesyq7" path="res://assets/level/sprites/desert-backgorund.png" id="1_dtr7s"]
 [ext_resource type="AudioStream" uid="uid://ymjirvy47xcp" path="res://assets/level/music/Common Fight.ogg" id="1_m2ccs"]
+[ext_resource type="PackedScene" uid="uid://b78jdvuk2jq1j" path="res://assets/enemy/enemy.tscn" id="2_hkrum"]
 [ext_resource type="Texture2D" uid="uid://drballac3h2su" path="res://assets/level/sprites/clouds.png" id="2_rioi3"]
 [ext_resource type="PackedScene" uid="uid://dyxr4gbvwqi37" path="res://assets/player/player.tscn" id="5_7f0fj"]
 [ext_resource type="PackedScene" uid="uid://dcg0kkb4cyxce" path="res://assets/hud/hud.tscn" id="5_tm418"]
@@ -16,6 +17,7 @@ point_count = 2
 [node name="Level" type="Node2D" groups=["level"]]
 position = Vector2(1, 0)
 script = ExtResource("1_86xtm")
+enemy = ExtResource("2_hkrum")
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("1_m2ccs")
