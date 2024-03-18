@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ymjirvy47xcp" path="res://assets/level/music/Common Fight.ogg" id="1_m2ccs"]
 [ext_resource type="Texture2D" uid="uid://drballac3h2su" path="res://assets/level/sprites/clouds.png" id="2_rioi3"]
 
-[node name="Level" type="Node2D"]
+[node name="Level" type="Node2D" groups=["level"]]
 script = ExtResource("1_86xtm")
 
 [node name="BgMusic" type="AudioStreamPlayer" parent="."]
